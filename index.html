@@ -165,13 +165,13 @@
 <body class="antialiased selection:bg-yellow-100">
 
     <!-- Seção Hero Responsiva com Ajuste de Enquadramento Fino -->
-    <header class="relative h-[45vh] md:h-[50vh] overflow-hidden bg-navy text-white shadow-2xl">
+    <header class="relative h-[45vh] md:h-[55vh] overflow-hidden bg-navy text-white shadow-2xl">
         <div class="absolute inset-0 opacity-40">
-            <!-- Posicionamento focado na parte superior (20%) para não cortar os rostos -->
-            <img src="https://i.imgur.com/k4Jqjfw.jpeg" alt="[Imagem de Ricardo e Maiena]" class="w-full h-full object-cover object-[center_20%]">
+            <!-- object-[center_40%] foca mais abaixo do que antes para centralizar os rostos -->
+            <img src="https://i.imgur.com/k4Jqjfw.jpeg" alt="[Imagem de Ricardo e Maiena]" class="w-full h-full object-cover object-[center_40%]">
         </div>
         <div class="relative z-10 h-full flex flex-col items-center px-6 fade-in text-center">
-            <!-- No mobile, alinhamos o título à base (items-end) para manter os rostos visíveis no topo -->
+            <!-- Mantemos o items-end no mobile para desobstruir o topo -->
             <div class="flex-1 flex items-end md:items-center justify-center pb-4 md:pb-0 md:pt-20">
                 <h1 class="highlight-font text-3xl sm:text-4xl md:text-7xl font-extrabold tracking-tight drop-shadow-lg text-white">Maiena & Ricardo</h1>
             </div>
