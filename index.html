@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homenagem: Maiena e Ricardo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy-deep: #050f41;
+            --gold-accent: #FAB932;
+            --green-accent: #079551;
+            --cream-soft: #fdfaf6;
+        }
+
+        body {
+            font-family: 'Carlito', 'Montserrat', sans-serif;
+            background-color: var(--cream-soft);
+            color: var(--navy-deep);
+            scroll-behavior: smooth;
+        }
+
+        .highlight-font { 
+            font-family: 'Montserrat', sans-serif; 
+        }
+
+        .letter-paper {
+            background-image: 
+                linear-gradient(rgba(253, 250, 246, 0.96), rgba(253, 250, 246, 0.96)),
+                url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+        }
+
+        .accent-color { color: var(--green-accent); }
+        .bg-accent { background-color: var(--green-accent); }
+        .border-accent { border-color: var(--green-accent); }
+
+        .gold-text { color: var(--gold-accent); }
+        .bg-gold { background-color: var(--gold-accent); }
+
+        .navy-accent { color: var(--navy-deep); }
+        .bg-navy { background-color: var(--navy-deep); }
+
+        .photo-hover {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            cursor: pointer;
+        }
+        .photo-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .elevated-card {
+            background: white;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+        
+        .elevated-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .magazine-quote {
+            position: relative;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            margin: 2.5rem 0;
+            background: white;
+            border-top: 3px solid var(--gold-accent);
+            border-bottom: 3px solid var(--gold-accent);
+        }
+
+        @media (min-width: 768px) {
+            .magazine-quote {
+                padding: 3rem 2rem;
+                margin: 3rem 0;
+            }
+        }
+
+        .magazine-quote::before {
+            content: '“';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem;
+            font-family: 'Montserrat', serif;
+            color: var(--gold-accent);
+            background: white;
+            line-height: 1;
+            padding: 0 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .magazine-quote::before {
+                top: -20px;
+                font-size: 5rem;
+                padding: 0 1rem;
+            }
+        }
+
+        .seniority-columns {
+            column-count: 2;
+            column-gap: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .seniority-columns {
+                column-count: 3;
+                column-gap: 2rem;
+            }
+        }
+
+        .seniority-item {
+            break-inside: avoid;
+            margin-bottom: 0.4rem;
+        }
+
+        #photo-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            #photo-modal {
+                padding: 2rem;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .aspect-4-5 {
+            aspect-ratio: 4 / 5;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-yellow-100">
+
+    <!-- Seção Hero Responsiva -->
+    <header class="relative h-[40vh] md:h-[55vh] overflow-hidden bg-navy text-white shadow-2xl">
+        <div class="absolute inset-0 opacity-40">
+            <img src="https://i.imgur.com/k4Jqjfw.jpeg" alt="[Imagem de Ricardo e Maiena]" class="w-full h-full object-cover">
+        </div>
+        <div class="relative z-10 h-full flex flex-col items-center px-6 fade-in text-center">
+            <div class="flex-1 flex items-center justify-center pt-12 md:pt-20">
+                <h1 class="highlight-font text-3xl sm:text-4xl md:text-7xl font-extrabold tracking-tight drop-shadow-lg text-white">Maiena & Ricardo</h1>
+            </div>
+            <div class="pb-4 md:pb-6 space-y-1">
+                <span class="block uppercase tracking-[0.3em] md:tracking-[0.4em] text-[10px] md:text-xs opacity-90 highlight-font font-medium gold-text">Hospital Naval de Recife</span>
+                <span class="block uppercase tracking-[0.2em] md:tracking-[0.3em] text-[9px] md:text-xs opacity-85 highlight-font font-semibold text-white">Divisão de Medicina</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 md:mt-12 relative z-20 pb-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12">
+            
+            <!-- Coluna da Carta -->
+            <article class="lg:col-span-8">
+                <div class="letter-paper p-6 sm:p-8 md:p-16 rounded-sm border border-gray-100 shadow-sm">
+                    <div class="mb-10 md:mb-12">
+                        <h2 class="highlight-font text-xl md:text-3xl font-extrabold mb-2 accent-color uppercase tracking-tight">Aos nossos eternos Chefes e Amigos,</h2>
+                        <h3 class="highlight-font text-lg md:text-2xl font-bold navy-accent italic">Capitães de Corveta (Md) Maiena e Ricardo,</h3>
+                    </div>
+                    
+                    <div class="space-y-6 text-gray-800 leading-relaxed text-base md:text-lg text-justify">
+                        <p>Aqui quem fala neste momento não é apenas o CT Mauriston. Empresto minha voz para que ela soe uníssona, carregando o sentimento de 36 oficiais médicos e 4 praças que, hoje, sentem o peso agridoce da partida.</p>
+                        
+                        <p>A "movimentação", essa constante na nossa vida de farda, nos impõe hoje a separação física, mas também nos oferece a oportunidade de celebrar o ciclo que se encerra. Vocês, que por mais de dez anos serviram neste <strong>Hospital Naval de Recife</strong>, agora partem para assumir novas missões na <span class="navy-accent font-semibold">Nau Capitânia do Sistema de Saúde da Marinha</span>, <strong>o Gigante Hospital Naval Marcílio Dias</strong>.</p>
+
+                        <p>Mas nós não poderíamos deixá-los partir levando apenas memórias imateriais. <strong>Sentimos que era preciso que vocês levassem um pedaço físico de Pernambuco, algo que tivesse "chão", raiz e história, para ancorar com <em>Altos Coqueiros</em> a casa que vocês montarão nas terras da Guanabara.</strong></p>
+
+                        <div class="elevated-card py-8 md:py-10 my-10 md:my-12 border-l-4 md:border-l-8 border-green-600 px-6 md:px-8 italic text-center text-lg md:text-2xl highlight-font font-bold accent-color text-justify">
+                            "Para materializar o que as palavras, por vezes limitadas, mal conseguem expressar, nós lhes entregamos este <strong>Leão de Nuca</strong>."
+                        </div>
+
+                        <!-- Imagem do Leão de Nuca -->
+                        <div class="mt-8 md:mt-12 mb-16 md:mb-24 flex justify-center">
+                            <div class="photo-hover bg-white p-3 md:p-4 shadow-2xl rounded-sm border-2 border-accent max-w-[280px] sm:max-w-sm md:max-w-md" onclick="openModal('https://i.imgur.com/iwn2nYe.png')">
+                                <img src="https://i.imgur.com/iwn2nYe.png" alt="[Imagem do Leão de Nuca]" class="w-full h-auto rounded-sm object-contain">
+                                <p class="text-[9px] md:text-[10px] mt-3 text-center uppercase tracking-[0.2em] text-gray-600 font-bold highlight-font">Leão de Nuca - Tracunhaém/PE</p>
+                            </div>
+                        </div>
+
+                        <p>Esta obra não foi escolhida ao acaso. Não se trata apenas de um <em>souvenir</em> de barro de Tracunhaém. Esta peça carrega uma sabedoria que espelha, de forma quase mágica, a vida de vocês dois.</p>
+                        
+                        <p><strong>Contam as histórias do barro sagrado de Tracunhaém que o saudoso Mestre Nuca, ao criar seus famosos leões, era responsável pela estrutura: ele moldava o corpo forte, as patas firmes, o porte altivo de guarda. Mas o leão ainda não estava pronto. Era preciso a intenção de Dona Maria, sua esposa e parceira de toda uma vida. Era Maria quem, com paciência infinita e delicadeza nas pontas dos dedos, criava e aplicava, um a um, os cachos da juba que coroam a obra.</strong></p>
+
+                        <div class="elevated-card p-6 md:p-8 my-10 md:my-12 bg-white text-center">
+                            <p class="font-extrabold text-xl md:text-2xl accent-color highlight-font uppercase tracking-tighter">
+                                Nuca dizia com orgulho: "O leão é meu. O cabelo é dela".
+                            </p>
+                        </div>
+
+                        <p>Olhando para vocês, vemos essa mesma simbiose perfeita. Ricardo e Maiena, em uma <strong>dança de liderança rara</strong>, alternaram-se magistralmente entre ser a força que sustenta a estrutura da nossa <strong>Divisão</strong> e a delicadeza que cuida dos detalhes humanos de cada um de nós. <strong>Vocês foram, para nós, a fusão de Nuca e Maria: estrutura e arte, comando e acolhimento, PAIS E LÍDERES.</strong></p>
+
+                        <p>Este leão, forjado nel fogo dos fornos de Tracunhaém, é também símbolo de resistência. Assim como o barro cru precisa passar pela prova das altas temperaturas para se tornar cerâmica eterna, vocês passaram pelo "fogo" das exigências da nossa profissional e da vida militar aqui no HNRe. Vocês saem daqui "queimados", não no sentido de exaustão, mas no sentido de têmpera: estão mais fortes, mais resistentes, prontos para qualquer missão.</p>
+
+                        <p>Mas este leão que vocês levam possui uma postura específica. Notem a cabeça erguida, as narinas abertas e a crina que parece lutar contra o vento. Se assemelha a um militar em posição de sentido, imobilidade de formatura, cabeça erguida e olhar fixo na linha do horizonte. Ele personifica a liderança nata e a altivez. <strong>Este leão é o herdeiro direto das revoluções libertárias que fazem de Pernambuco um estado diferente de todos os outros.</strong> Ele carrega a fibra de 1817, o idealismo da Confederação do Equador de 1824 e a resiliência da Revolução Praieira de 1848.</p>
+
+                        <p>Essa mesma fibra, essa incapacidade de se dobrar diante das dificuldades, nós vimos em vocês. Vocês foram nossos chefes, mas exerceram uma liderança que transbordava o regulamento. <strong>Foi um cuidado de pais para filhos, um zelo com os mais modernos que nos ensinou que a hierarquia não precisa ser fria para ser respeitada. Com vocês, aprendemos a ser leões: a ter a força para o combate, mas a nobreza para o acolhimento.</strong></p>
+
+                        <!-- Card de Destaque Estilo Revista Responsivo -->
+                        <div class="magazine-quote elevated-card px-6 md:px-12">
+                            <p class="highlight-font text-lg sm:text-2xl md:text-3xl font-extrabold text-navy-deep leading-tight italic">
+                                "Foi um cuidado de pais para filhos, um zelo com os mais modernos que nos ensinou que a hierarquia não precisa ser fria para ser respeitada"
+                            </p>
+                        </div>
+
+                        <p>Levem este leão como o Guardião da Porta do novo lar. A tradição diz que ele protege a casa contra energias ruins e vigia a felicidade da família. <strong>Que ele lhes recorde, nos dias difíceis, que vocês possuem a garra do "Leão do Norte".</strong></p>
+
+                        <p>
+                            Como nos ensinou o poeta João Cabral de Melo Neto em A Educação pela Pedra, <strong>vocês nos deram uma educação 'de fora para dentro'. Uma 'cartilha muda', ensinada não por discursos vazios, mas pela 'carnadura concreta' do exemplo diário.</strong> Aprendemos com vocês a ter a 'resistência fria ao que flui', a sermos resilientes como a pedra do sertão de Serra Talhada.
+                        </p>
+
+                        <!-- Foto do Hospital Naval Marcílio Dias -->
+                        <div class="my-8 md:my-10 flex justify-center">
+                            <div class="photo-hover elevated-card bg-white p-2 md:p-3 shadow-xl rounded-sm border-2 border-gold-accent max-w-2xl w-full" onclick="openModal('https://live.staticflickr.com/65535/54181501205_e741f39e99_3k.jpg')">
+                                <img src="https://live.staticflickr.com/65535/54181501205_e741f39e99_3k.jpg" alt="[Imagem do Hospital Naval Marcílio Dias]" class="w-full h-auto rounded-sm object-cover aspect-video">
+                                <p class="text-[9px] md:text-[10px] mt-3 text-center uppercase tracking-[0.2em] text-gray-600 font-bold highlight-font">HNMD: destino à altura da grandeza profissional</p>
+                            </div>
+                        </div>
+
+                        <p>Agora, o destino e o dever os chamam à Sede. Vocês seguem para a Clínica de Anestesiologia do Hospital Naval Marcílio Dias, a nossa "Nau Capitânia". <strong>É um destino à altura da grandeza profissional de vocês.</strong> Mas sabemos que deixar o Recife dói, porque o Recife é um estado de espírito que nos habita. Como nos ensinou Manuel Bandeira, em sua <em>Evocação do Recife</em>:</p>
+
+                        <div class="elevated-card p-6 md:p-10 my-8 md:my-10 border-l-4 border-green-600 italic font-semibold py-6 md:py-8 text-gray-700 bg-white text-justify relative">
+                            "Recife... <br>
+                            Não a Veneza americana <br>
+                            Não a Mauritsstad dos armadores das Índias Ocidentais <br>
+                            Não o Recife dos Mascates <br>
+                            Nem mesmo o Recife que aprendi a amar depois — Recife das revoluções libertárias <br>
+                            Mas o Recife sem história nem literatura <br>
+                            Recife sem mais nada <br>
+                            Recife da minha infância"
+                            <div class="text-right mt-4 text-[9px] md:text-[10px] font-semibold text-gray-600 uppercase tracking-widest not-italic">
+                                (Livro Libertinagem, 1930)
+                            </div>
+                        </div>
+
+                        <p>
+                            <strong>Sabemos que a saudade virá, inevitável.</strong> E quando ela vier, que seja como na Evocação de Bandeira. Que ao olharem para este leão de barro em sua nova casa, não vejam apenas uma escultura inanimada. Que sintam o cheiro do Capibaribe, fazendo surgir o Atlântico ao encontrar o Beberibe. <strong>Ouçam o eco dos nossos corredores e lembrem-se do "Recife sem história nem literatura, Recife sem mais nada, Recife da nossa infância" profissional compartilhada, onde vimos a pequena Sofia crescer e onde crescemos pessoal e profissionalmente juntos como família naval.</strong>
+                        </p>
+
+                        <p>Lembrem-se sempre que, onde quer que estejam, vocês levam a marca indelével do Leão do Norte. Como diz a canção que ecoa em nossa alma Pernambucana: <span class="italic font-semibold">"Eu sou de Casa Forte, sou de Pernambuco, sou o Leão do Norte"</span>. <strong>Vocês são a encarnação dessa força.</strong></p>
+
+                        <p><strong>Vão com Deus, Maiena, Ricardo e pequena Sofia. O Marcílio Dias ganha dois gigantes e uma família. Nós ficamos aqui, com o coração apertado, mas com a alma "educada pela pedra" e pelo afeto imenso que vocês nos deixaram como legado.</strong></p>
+                    </div>
+
+                    <div class="mt-12 md:mt-16 pt-10 border-t border-green-100 mb-16 text-center">
+                        <p class="highlight-font text-xl font-extrabold navy-accent mb-6 italic text-left">Bons ventos e mares tranquilos.<br><br></p>
+                        
+                        <p class="text-[10px] md:text-sm text-gray-500 uppercase tracking-widest highlight-font font-medium text-right mb-4">Recife, 22 de janeiro de 2026.</p>
+                        
+                        <div class="mt-8 mb-16 flex flex-col items-center text-center">
+                            <img src="https://i.imgur.com/zoJERfB.png" alt="[Assinatura]" class="h-20 md:h-32 mb-2 object-contain opacity-90 mx-auto">
+                            <p class="text-xs md:text-sm font-bold text-navy-deep uppercase tracking-[0.2em] highlight-font">CT (Md) MAURISTON</p>
+                            <p class="text-[9px] md:text-xs text-gray-600 mt-1 uppercase highlight-font font-semibold px-4">Em nome da Divisão de Medicina do Hospital Naval de Recife</p>
+                        </div>
+
+                        <!-- Lista de Militares com Cartão e Grelha Corrigida -->
+                        <div class="pt-6">
+                            <div class="elevated-card p-5 md:p-8 border border-gray-50">
+                                <div class="seniority-columns text-[9px] md:text-xs leading-relaxed navy-accent uppercase font-semibold text-left">
+                                    <div class="seniority-item">CC (Md) NÁDIA MATIAS</div>
+                                    <div class="seniority-item">CT (RM2-Md) CAMPOS</div>
+                                    <div class="seniority-item">CT (RM2-Md) JÚLIO CÉSAR</div>
+                                    <div class="seniority-item">CT (Md) FRANÇA</div>
+                                    <div class="seniority-item">CT (Md) SALYNE</div>
+                                    <div class="seniority-item">CT (Md) SEIXAS</div>
+                                    <div class="seniority-item">CT (Md) LUZ</div>
+                                    <div class="seniority-item">CT (Md) NÉLIA NOGUEIRA</div>
+                                    <div class="seniority-item">1T (Md) VALÉRIA</div>
+                                    <div class="seniority-item">1T (Md) MÔNICA VIRGÍNIA</div>
+                                    <div class="seniority-item">1T (RM2-Md) SANTIAGO</div>
+                                    <div class="seniority-item">1T (RM2-Md) VIANNA</div>
+                                    <div class="seniority-item">1T (RM2-Md) BATISTA</div>
+                                    <div class="seniority-item">1T (RM2-Md) XAVIER</div>
+                                    <div class="seniority-item">1T (RM2-Md) RÊGO</div>
+                                    <div class="seniority-item">1T (RM2-Md) FILHO</div>
+                                    <div class="seniority-item">1T (RM2-Md) DUBOURCQ</div>
+                                    <div class="seniority-item">1T (RM2-Md) ALVES</div>
+                                    <div class="seniority-item">1T (RM2-Md) BARRETO</div>
+                                    <div class="seniority-item">1T (RM2-Md) RAYOL</div>
+                                    <div class="seniority-item">2T (RM2-Md) KILDARE</div>
+                                    <div class="seniority-item">2T (RM2-Md) MEDEIROS</div>
+                                    <div class="seniority-item">2T (RM2-Md) ARRUDA</div>
+                                    <div class="seniority-item">2T (RM2-Md) CAMELO</div>
+                                    <div class="seniority-item">2T (RM2-Md) COSTA</div>
+                                    <div class="seniority-item">2T (RM2-Md) CARVALHO</div>
+                                    <div class="seniority-item">2T (RM2-Md) OLIVEIRA</div>
+                                    <div class="seniority-item">2T (RM2-Md) TRINDADE</div>
+                                    <div class="seniority-item">2T (RM2-Md) MATTOS</div>
+                                    <div class="seniority-item">2T (RM2-Md) DIÓGENES</div>
+                                    <div class="seniority-item">2T (RM2-Md) GUIMARÃES</div>
+                                    <div class="seniority-item">2T (RM2-Md) ALBUQUERQUE</div>
+                                    <div class="seniority-item">2T (RM2-Md) BARBOSA</div>
+                                    <div class="seniority-item">2SG-ES MARCELY PALLAS</div>
+                                    <div class="seniority-item">3SG-RM2-RM LUANA</div>
+                                    <div class="seniority-item">CB-RM2-RM CABRAL</div>
+                                    <div class="seniority-item">CB-RM2-RM LUIZ FELIPE</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Barra Lateral Responsiva -->
+            <aside class="lg:col-span-4 space-y-8">
+                <div class="sticky top-8">
+                    <h3 class="highlight-font text-xl md:text-2xl font-extrabold mb-6 navy-accent flex items-center gap-3">
+                        Momentos
+                        <span class="h-px flex-1 bg-gray-200"></span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-3 md:gap-4">
+                        <div class="photo-hover elevated-card bg-white p-1.5 md:p-2 shadow-sm rounded-sm" onclick="openModal('https://i.imgur.com/k4Jqjfw.jpeg')">
+                            <img src="https://i.imgur.com/k4Jqjfw.jpeg" alt="" class="w-full aspect-4-5 object-cover rounded-sm">
+                        </div>
+                        <div class="photo-hover elevated-card bg-white p-1.5 md:p-2 shadow-sm rounded-sm" onclick="openModal('https://i.imgur.com/QK3slIw.jpeg')">
+                            <img src="https://i.imgur.com/QK3slIw.jpeg" alt="" class="w-full aspect-4-5 object-cover rounded-sm">
+                        </div>
+                        <div class="photo-hover elevated-card bg-white p-1.5 md:p-2 shadow-sm rounded-sm" onclick="openModal('https://i.imgur.com/nE75GsU.jpeg')">
+                            <img src="https://i.imgur.com/nE75GsU.jpeg" alt="" class="w-full aspect-4-5 object-cover rounded-sm">
+                        </div>
+                        <div class="photo-hover elevated-card bg-white p-1.5 md:p-2 shadow-sm rounded-sm" onclick="openModal('https://i.imgur.com/FKZBfQL.jpeg')">
+                            <img src="https://i.imgur.com/FKZBfQL.jpeg" alt="" class="w-full aspect-4-5 object-cover rounded-sm">
+                        </div>
+                        <div class="photo-hover elevated-card bg-white p-1.5 md:p-2 shadow-sm rounded-sm" onclick="openModal('https://i.imgur.com/FPcOZBh.jpeg')">
+                            <img src="https://i.imgur.com/FPcOZBh.jpeg" alt="" class="w-full aspect-4-5 object-cover rounded-sm">
+                        </div>
+                        <div class="photo-hover elevated-card bg-white p-1.5 md:p-2 shadow-sm rounded-sm" onclick="openModal('https://i.imgur.com/SNS105D.jpeg')">
+                            <img src="https://i.imgur.com/SNS105D.jpeg" alt="" class="w-full aspect-4-5 object-cover rounded-sm">
+                        </div>
+                        <div class="photo-hover elevated-card bg-white p-1.5 md:p-2 shadow-sm rounded-sm" onclick="openModal('https://i.imgur.com/YRC57Ip.jpeg')">
+                            <img src="https://i.imgur.com/YRC57Ip.jpeg" alt="" class="w-full aspect-4-5 object-cover rounded-sm">
+                        </div>
+                        <div class="photo-hover elevated-card bg-white p-1.5 md:p-2 shadow-sm rounded-sm" onclick="openModal('https://i.imgur.com/4nFLiTt.jpeg')">
+                            <img src="https://i.imgur.com/4nFLiTt.jpeg" alt="" class="w-full aspect-4-5 object-cover rounded-sm">
+                        </div>
+                        <div class="photo-hover elevated-card bg-white p-1.5 md:p-2 shadow-sm rounded-sm" onclick="openModal('https://i.imgur.com/5qDoA8f.jpeg')">
+                            <img src="https://i.imgur.com/5qDoA8f.jpeg" alt="" class="w-full aspect-4-5 object-cover rounded-sm">
+                        </div>
+                        <div class="photo-hover elevated-card bg-white p-1.5 md:p-2 shadow-sm rounded-sm" onclick="openModal('https://i.imgur.com/6rC8JKD.jpeg')">
+                            <img src="https://i.imgur.com/6rC8JKD.jpeg" alt="" class="w-full aspect-4-5 object-cover rounded-sm">
+                        </div>
+                        <div class="photo-hover elevated-card bg-white p-1.5 md:p-2 shadow-sm rounded-sm" onclick="openModal('https://i.imgur.com/VSj25cm.jpeg')">
+                            <img src="https://i.imgur.com/VSj25cm.jpeg" alt="" class="w-full aspect-4-5 object-cover rounded-sm">
+                        </div>
+                        <div class="photo-hover elevated-card bg-white p-1.5 md:p-2 shadow-sm rounded-sm" onclick="openModal('https://i.imgur.com/fXxhoIj.jpeg')">
+                            <img src="https://i.imgur.com/fXxhoIj.jpeg" alt="" class="w-full aspect-4-5 object-cover rounded-sm">
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Modal Responsivo -->
+    <div id="photo-modal" onclick="closeModal()">
+        <button class="absolute top-4 right-4 md:top-10 md:right-10 text-white text-3xl md:text-4xl hover:text-gold-accent transition-colors focus:outline-none">&times;</button>
+        <img id="modal-img" src="" alt="[Foto Ampliada]" class="max-w-full max-h-[85vh] shadow-2xl rounded-sm border-2 border-white object-contain">
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="bg-navy text-white py-12 md:py-16 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <p class="highlight-font italic text-lg md:text-xl font-bold opacity-90 mb-6">"A saudade é a presença da ausência."</p>
+            <div class="h-px w-24 md:w-32 bg-gold mx-auto mb-8"></div>
+            <style>.bg-gold { background-color: var(--gold-accent); }</style>
+            <img src="https://i.imgur.com/gNG0TBH.png" alt="[Logo da Divisão de Medicina]" class="mx-auto h-20 md:h-32 object-contain opacity-90">
+        </div>
+    </footer>
+
+    <script>
+        function openModal(src) {
+            const modal = document.getElementById('photo-modal');
+            const img = document.getElementById('modal-img');
+            img.src = src;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('photo-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
